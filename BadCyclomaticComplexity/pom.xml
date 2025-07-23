@@ -18,7 +18,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
-  <artifactId>bad_names_examples</artifactId>
+  <artifactId>BadCyclomaticComplexity</artifactId>
 
   <build>
     <plugins>

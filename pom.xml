@@ -6,8 +6,8 @@
   <version>1.0-SNAPSHOT</version>
 
   <modules>
-    <module>bad_names_plugin</module>
-    <module>bad_names_examples</module>
+    <module>BadCycloComplexity_plugin</module>
+    <module>BadCyclomaticComplexity</module>
   </modules>
 
   <packaging>pom</packaging>

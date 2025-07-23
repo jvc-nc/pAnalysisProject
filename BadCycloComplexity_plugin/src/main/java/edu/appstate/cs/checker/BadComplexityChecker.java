@@ -20,7 +20,7 @@ import static com.google.errorprone.BugPattern.SeverityLevel.WARNING;
         linkType = CUSTOM,
         link = "https://github.com/plse-Lab/"
 )
-public class BadNamesChecker extends BugChecker implements
+public class BadComplexityChecker extends BugChecker implements
         BugChecker.IdentifierTreeMatcher,
         BugChecker.MethodInvocationTreeMatcher,
         BugChecker.MethodTreeMatcher {
