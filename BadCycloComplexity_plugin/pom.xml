@@ -12,7 +12,7 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>bad-names-plugin</artifactId>
+  <artifactId>BadCyclomaticComplexity-plugin</artifactId>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
