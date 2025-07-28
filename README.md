@@ -1,4 +1,4 @@
-# Cyclomatic Complexity ErrorProne plugin
+# Cyclomatic Complexity ErrorProne Plugin
 
 ## USER GUIDE:
 ## How to compile and run code. 
