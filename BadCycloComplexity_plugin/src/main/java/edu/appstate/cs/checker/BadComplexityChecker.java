@@ -15,7 +15,7 @@ import static com.google.errorprone.BugPattern.SeverityLevel.WARNING;
 
 @AutoService(BugChecker.class)
 @BugPattern(
-        name = "LoopComplexityChecker",
+        name = "BadCyclomaticComplexity",
         summary = "Detects excessive loop complexity in methods",
         severity = WARNING,
         linkType = CUSTOM,
@@ -35,9 +35,20 @@ public class BadComplexityChecker extends BugChecker implements
 
         int loopCount = scanner.count;
         if (loopCount > 8) {
-            return "Method '" + methodTree.getName() + "' has too many loops, cyclomatic complexity is too high: " + loopCount + ". Consider refactoring to 5 or fewer loops.";
+            return String.format(
+                "Method '%s' has too many loops:\n" +
+                "  Loop count        : %d\n" +
+                "  Recommended max   : 5\n" +
+                "  Suggestion        : Consider refactoring to reduce loops.",
+                methodTree.getName(), loopCount
+            );
         } else if (loopCount > 5) {
-            return "Method '" + methodTree.getName() + "' has a moderately high number of loops, consider refactoring to 5 or fewer loops: " + loopCount;
+            return String.format(
+                "Method '%s' has a moderately high number of loops:\n" +
+                "  Loop count        : %d\n" +
+                "  Recommended max   : 5",
+                methodTree.getName(), loopCount
+            );
         }
         return null;
     }
@@ -53,9 +64,20 @@ public class BadComplexityChecker extends BugChecker implements
 
         int branchCount = scanner.count;
         if (branchCount > 12) {
-            return "Method '" + methodTree.getName() + "' has too many branches, cyclomatic complexity is too high: " + branchCount + ". Consider refactoring to 8 or fewer branches.";
+            return String.format(
+                "Method '%s' has too many branches:\n" +
+                "  Branch count      : %d\n" +
+                "  Recommended max   : 8\n" +
+                "  Suggestion        : Consider refactoring to reduce branches.",
+                methodTree.getName(), branchCount
+            );
         } else if (branchCount > 8) {
-            return "Method '" + methodTree.getName() + "' has a moderately high number of branches, consider refactoring to 8 or fewer branches: " + branchCount;
+            return String.format(
+                "Method '%s' has a moderately high number of branches:\n" +
+                "  Branch count      : %d\n" +
+                "  Recommended max   : 8",
+                methodTree.getName(), branchCount
+            );
         }
         return null;
     }
@@ -74,7 +96,13 @@ public class BadComplexityChecker extends BugChecker implements
 
         int total = loopScanner.count + branchScanner.count;
         if (total > 15) {
-            return "Method '" + methodTree.getName() + "' has total cyclomatic complexity that is too high: " + total + ". Consider refactoring to 15 or fewer combined loops and branches.";
+            return String.format(
+                "Method '%s' has high total cyclomatic complexity:\n" +
+                "  Combined complexity: %d\n" +
+                "  Recommended max    : 15\n" +
+                "  Suggestion         : Consider refactoring to simplify control flow.",
+                methodTree.getName(), total
+            );
         }
         return null;
     }
