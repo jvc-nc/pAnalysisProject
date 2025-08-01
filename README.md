@@ -14,14 +14,13 @@ A Maven plugin that analyzes and warns about excessive cyclomatic complexity in 
 
 ## Setup Instructions
 
-### 1. Clone and Install the Plugin
+### 1. Clone the Repository
 
-Clone this repository and install the plugin locally:
+Clone this repository:
 
 ```bash
 git clone <your-repo-url>
 cd <repo-directory>
-mvn install
 ```
 
 ### 2. Configure JVM for ErrorProne
@@ -72,6 +71,12 @@ Add the following to your `<build><plugins>` section:
     </compilerArgs>
   </configuration>
 </plugin>
+```
+
+Once you’ve added both the `.mvn/jvm.config` file and updated your `pom.xml`, run the following to install the plugin:
+
+```bash
+mvn install
 ```
 
 ---
